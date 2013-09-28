@@ -1,6 +1,6 @@
 White Whale
 =====
-Simple and lightweight cryptography having Java and Javascript version, for academic purposes.
+Simple and lightweight cryptography having Java and Javascript versions, for academic purposes.
 
 ![alt tag](https://raw.github.com/leonardiwagner/whitewhale/master/logo.jpg)
 
