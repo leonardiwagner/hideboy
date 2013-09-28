@@ -14,5 +14,5 @@ Features
 
 Can I use this for serious business?
 =====
-First of all, I'm not a cryptography or security expert, so I did it on my own for an (old) academic project, thus I didn't recommend that. However is safe enough for an academic project.
+First of all, I'm not a cryptography or security expert, so I did it on my own for an (old) academic project, thus I don't recommend this for important data. However is safe enough for an academic project.
 
