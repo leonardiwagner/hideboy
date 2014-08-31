@@ -1,4 +1,5 @@
 language: java
+secure: "FQYlVNVVM9fxpDlenP/m5Z/C+CqvlT1CzdL3gVXUvt04hkChuA5Gq6ZyGqK62nQ5USWTMhPUfKgXV4tCs8UtqwBT8GaWHD2laetofayKMUicUNeH4HPRY4gJS1RYRhd4VVpYqBN51qPBOD23mhnQgUKUS5WrzeQE30aqILRqsNo="
 deploy:
   provider: heroku
-  api_key: "YOUR API KEY"
+  api_key: HEROKU_API_KEY
