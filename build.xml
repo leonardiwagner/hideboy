@@ -1,5 +1,8 @@
 <project name="WhiteWhale" default="test">
   <target name="test">
 	<javac srcdir="java" destdir="java" />
+	<copy todir="javascript">
+	  <fileset dir="javascript"/>
+	</copy> 
   </target>
 </project>
