@@ -1,4 +1,4 @@
-<project name="WhiteWhale" default="compile">
+<project name="WhiteWhale" default="test">
   <target name="compile">
 	<javac srcdir="java" destdir="java/classes" />
   </target>
