@@ -1,11 +1,5 @@
 <project name="WhiteWhale" default="compile">
-
   <target name="compile">
-    <delete dir="bin" />
-    <mkdir dir="bin" />
-
 	<javac srcdir="java" destdir="java/classes" />
-	
-    
-  
+  </target>
 </project>
