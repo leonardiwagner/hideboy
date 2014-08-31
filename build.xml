@@ -1,5 +1,5 @@
 <project name="WhiteWhale" default="test">
   <target name="test">
-	<javac srcdir="java" destdir="java/classes" />
+	<javac srcdir="java" destdir="java" />
   </target>
 </project>
