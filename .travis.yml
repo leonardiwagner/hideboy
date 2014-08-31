@@ -1,6 +1,6 @@
 language: java
 deploy:
   provider: heroku
-  app: white-whale
   api_key:
-	secure: FQYlVNVVM9fxpDlenP/m5Z/C+CqvlT1CzdL3gVXUvt04hkChuA5Gq6ZyGqK62nQ5USWTMhPUfKgXV4tCs8UtqwBT8GaWHD2laetofayKMUicUNeH4HPRY4gJS1RYRhd4VVpYqBN51qPBOD23mhnQgUKUS5WrzeQE30aqILRqsNo=
+    secure: FQYlVNVVM9fxpDlenP/m5Z/C+CqvlT1CzdL3gVXUvt04hkChuA5Gq6ZyGqK62nQ5USWTMhPUfKgXV4tCs8UtqwBT8GaWHD2laetofayKMUicUNeH4HPRY4gJS1RYRhd4VVpYqBN51qPBOD23mhnQgUKUS5WrzeQE30aqILRqsNo=
+  app: white-whale
