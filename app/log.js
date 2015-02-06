@@ -10,9 +10,6 @@ var schema = new Mongoose.Schema({
 	});
 	
 module.exports = Log = function(){
-	
-	
-	
 	var document = Mongoose.model('log',schema);
 	
 	var saveLog = function(logObj){
@@ -30,16 +27,22 @@ module.exports = Log = function(){
 	};
 	
 	var findLog = function(query){
-		console.log(query);
 		document.find(query, function(err, results){
 			console.log(results);
 			return results;
 		});
 	}
 	
+	var findLatestLogs = function(count, callback){
+		document.find({}).sort('-date').limit(count).lean().exec(function(err, results){
+			callback(results);
+		});
+	};
+	
 	return {
 		save: saveLog,
-		find: findLog
+		find: findLog,
+		findLatest: findLatestLogs
 	};
 
 };

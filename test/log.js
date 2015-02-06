@@ -4,7 +4,7 @@ var Log = require("../app/log");
 
 describe("Log", function(){
 	before(function(){
-		var mongoUrl = process.env.MONGODB_URL || "mongodb://localhost";
+		var mongoUrl = process.env.MONGODB_URL || "mongodb://localhost/cryptography";
 		Mongoose.connect(mongoUrl);
 	});
 	
@@ -19,7 +19,11 @@ describe("Log", function(){
 		});
 	});
 	
-	it("should log a decrypt command", function(){
-	
+	it("should list latest logs", function(){
+		var log = new Log();
+		var loguess = log.findLatest(1, function(result){
+			//todo
+			//console.log(result);
+		});
 	});
 });
