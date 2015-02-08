@@ -10,11 +10,13 @@ mongoose.connect(mongoUrl);
 
 var Log = require("./app/log");
 
+console.log("mongo db url:" + mongoUrl);
+
 
 //var router = require('./app/routes/router')(app);
 //var socketManager = require('./app/sockets/sockets')(http);
 
-//app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 
 
 
@@ -25,14 +27,6 @@ http.listen(port, function(){
 });
 
 app.get('/', function(req, res){
-	var log = new Log();
-	log.findLatest(3, function(result){
-		var resultText = "";
-		for(var i = 0; i < result.length; i++){
-			resultText += result[i].date;
-		}
-		 res.write(resultText);
-		 res.end();
-	 });
+	res.sendFile("index.html",  { root: path.join(__dirname, '../public') });
 });
 

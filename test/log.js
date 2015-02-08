@@ -8,7 +8,7 @@ describe("Log", function(){
 		Mongoose.connect(mongoUrl);
 	});
 	
-	it("should log a encrypt command", function(){
+	it("should log a encrypt command", function(done){
 		var log = new Log();
 		var saveId = log.save({
 			dataSize: 500,
@@ -16,14 +16,19 @@ describe("Log", function(){
 			isEncryption: true,
 			hasUploadedInput: false,
 			hasDownloadedOutput: false
+		}, function(productId){d
+			//todo
+			//console.log(productId);
+			done();
 		});
 	});
 	
-	it("should list latest logs", function(){
+	it("should list latest logs", function(done){
 		var log = new Log();
-		var loguess = log.findLatest(1, function(result){
+		var loguess = log.findLatest(3, function(result){
 			//todo
 			//console.log(result);
+			done();
 		});
 	});
 });

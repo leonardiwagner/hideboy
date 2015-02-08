@@ -12,7 +12,7 @@ var schema = new Mongoose.Schema({
 module.exports = Log = function(){
 	var document = Mongoose.model('log',schema);
 	
-	var saveLog = function(logObj){
+	var saveLog = function(logObj, callback){
 		var logObject = document({
 			dataSize: logObj.dataSize,
 			dataKeySize: logObj.dataKeySize,
@@ -21,9 +21,9 @@ module.exports = Log = function(){
 			hasDownloadedOutput: logObj.hasDownloadedOutput
 		});
 		
-		logObject.save();
-		
-		return logObject._id;
+		logObject.save(function(err, model, numberAffected){
+			return callback(model._id);
+		});
 	};
 	
 	var findLog = function(query){
