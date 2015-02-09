@@ -16,7 +16,7 @@ describe("Log", function(){
 			isEncryption: true,
 			hasUploadedInput: false,
 			hasDownloadedOutput: false
-		}, function(productId){d
+		}, function(productId){
 			//todo
 			//console.log(productId);
 			done();
