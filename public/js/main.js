@@ -2,19 +2,16 @@ var angularApp = angular.module('angularApp', []);
 
 angularApp.controller('Ctrl', function ($scope, $http) {
 	$scope.app = {
-		inputLabel: "",
-		outputLabel: "",
 		input: "",
 		output: "",
 		key: "",
-		successMessage: "",
 		commandName: "",
-		commandFunction: null,
+		modeIndex: null,
 		hasCommandExecuted: false
 	};
 
-	var encrypt = function(isEncrypt){
-		var url = mode ? "/decrypt" : "/decrypt";
+	$scope.encrypt = function(){
+		var url = $scope.app.modeIndex == 0 ? "/encrypt" : "/decrypt";
 		$http.post(url, {text: $scope.app.input, key: $scope.app.key})
 		.success(function(data, status, headers, config) {
 			$scope.app.output = data;
@@ -27,9 +24,11 @@ angularApp.controller('Ctrl', function ($scope, $http) {
   var mode = [
 	{
 		inputLabel: "Text to encrypt",
+		inputTip: "Write here what you want to encrypt",
+		keyTip: "To make safer, you can use a key, and only with this key you can decrypt text further",
+		keyPlaceholder: "(Optional) write some password to use as key to decrypt this text further",
 		outputLabel: "Encrypted text",
 		commandName: "Encrypt Text",
-		commandFunction: encrypt(true),
 		successMessage: "Text encrypted! Now you can store this encrypted text anywhere and no one will know what it means without the correct key! Store the key somewhere safe, or share with people that you want to decrypt the message",
 		subCommand1Name: "New Encrypt",
 		subCommand2Name: "Decrypt Text"
@@ -37,7 +36,6 @@ angularApp.controller('Ctrl', function ($scope, $http) {
 		inputLabel: "Text to decrypt",
 		outputLabel: "Decrypted text",
 		commandName: "Decrypt Text",
-		commandFunction: encrypt(false),
 		successMessage: "Text decrypted! If you used the correct key probably you can read now. If you can't read, you've used a wrong key, or this is not your business!",
 		subCommand1Name: "New Decrypt",
 		subCommand2Name: "Encrypt Text"
@@ -49,7 +47,11 @@ angularApp.controller('Ctrl', function ($scope, $http) {
 	};
 	
 	var setMode = function(modeIndex){
+		$scope.app.modeIndex = modeIndex;
 		$scope.app.inputLabel = mode[modeIndex].inputLabel;
+		$scope.app.inputTip = mode[modeIndex].inputTip;
+		$scope.app.keyTip = mode[modeIndex].keyTip;
+		$scope.app.keyPlaceholder = mode[modeIndex].keyPlaceholder;
 		$scope.app.outputLabel = mode[modeIndex].outputLabel;
 		$scope.app.commandName = mode[modeIndex].commandName;
 		$scope.app.successMessage = mode[modeIndex].successMessage;

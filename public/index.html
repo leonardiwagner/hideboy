@@ -18,29 +18,35 @@
     <body>
        
 	   <div class="row" ng-controller="Ctrl">
+			<center>
+				<img src="img/logo.png" />
+			</center>
 			<div class="col-md-6 col-md-offset-3">
 				<ul class="nav nav-tabs">
 				  <li role="presentation" class="active"><a href="#" ng-click="changeMode(0);">Encrypt (hide text)</a></li>
 				  <li role="presentation"><a href="#" ng-click="changeMode(1);">Decrypt (discover text)</a></li>
 				</ul>
+				
 				<form>
-				  <div class="form-group" ng-show="!app.isCommandExecuted">
-					<label for="exampleInputEmail1">{{app.inputLabel}}</label>
-					<textarea ng-model="app.input" class="form-control" rows="3"></textarea>
+				  <div ng-class="{'has-error': !app.input, 'form-group': true}" ng-show="!app.isCommandExecuted">
+					<label for="fldInput" class="control-label">{{app.inputLabel}}</label>
+					<p ng-show="!app.input" class="bg-danger">{{app.inputTip}}</p>
+					<textarea id="fldInput" ng-model="app.input" class="form-control" rows="3"></textarea>	
 				  </div>
-				  <div class="form-group">
-					<label for="exampleInputPassword1">Key</label>
-					<input ng-model="app.key" type="input" class="form-control" placeholder="Write some password to use as key to decrypt this text further" >
+				  
+				  <div ng-class="{'has-warning': app.input && !app.key, 'form-group': true}">
+					<label for="fldKey" class="control-label">Key</label>
+					<p ng-show="app.input && !app.key" class="bg-warning">{{app.keyTip}}</p>
+					<input ng-model="app.key" type="input" class="form-control" id="fldKey" placeholder="{{app.keyPlaceholder}}" >
 				  </div>
-				  <div class="form-group" ng-show="app.isCommandExecuted">
-					<label for="exampleInputEmail1">{{app.outputLabel}}</label>
+				  <div class="form-group has-success" ng-show="app.isCommandExecuted">
+					<label for="exampleInputEmail1" class="control-label">{{app.outputLabel}}</label>
 					<textarea ng-model="app.output" class="form-control" rows="3"></textarea>
 				  </div>
 				  <div class="alert alert-success" role="alert" ng-show="app.isCommandExecuted">{{app.successMessage}}</div>
 				  <div class="form-group" ng-show="!app.isCommandExecuted">
-					<button  ng-click="{{app.commandFunction}}" type="button" class="btn btn-primary btn-lg btn-block">{{app.commandName}}</button>
+					<button  ng-disabled="!app.input" ng-click="encrypt()" type="button" class="btn btn-primary btn-lg btn-block">{{app.commandName}}</button>
 				  </div>
-
 				  <div class="row" ng-show="app.isCommandExecuted">
                     <div class="col-md-6">
 					  <button type="button" class="btn btn-primary btn-lg btn-block">{{app.subCommand1Name}}</button>
