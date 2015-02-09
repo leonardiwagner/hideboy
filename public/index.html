@@ -19,30 +19,34 @@
        
 	   <div class="row" ng-controller="Ctrl">
 			<div class="col-md-6 col-md-offset-3">
+				<ul class="nav nav-tabs">
+				  <li role="presentation" class="active"><a href="#" ng-click="changeMode(0);">Encrypt (hide text)</a></li>
+				  <li role="presentation"><a href="#" ng-click="changeMode(1);">Decrypt (discover text)</a></li>
+				</ul>
 				<form>
-				  <div class="form-group">
-					<label for="exampleInputEmail1">Text to encrypt</label>
+				  <div class="form-group" ng-show="!app.isCommandExecuted">
+					<label for="exampleInputEmail1">{{app.inputLabel}}</label>
 					<textarea ng-model="app.input" class="form-control" rows="3"></textarea>
 				  </div>
 				  <div class="form-group">
 					<label for="exampleInputPassword1">Key</label>
-					<input ng-model="app.key" type="input" class="form-control" >
+					<input ng-model="app.key" type="input" class="form-control" placeholder="Write some password to use as key to decrypt this text further" >
 				  </div>
-				  <div class="form-group">
-					<label for="exampleInputEmail1">Text to encrypt</label>
+				  <div class="form-group" ng-show="app.isCommandExecuted">
+					<label for="exampleInputEmail1">{{app.outputLabel}}</label>
 					<textarea ng-model="app.output" class="form-control" rows="3"></textarea>
 				  </div>
-				  <div class="alert alert-success" role="alert">Text encrypted! Save the key in somewhere safe</div>
-				  <div class="form-group">
-					<button  ng-click="encrypt();" type="button" class="btn btn-primary btn-lg btn-block">Encrypt Text</button>
+				  <div class="alert alert-success" role="alert" ng-show="app.isCommandExecuted">{{app.successMessage}}</div>
+				  <div class="form-group" ng-show="!app.isCommandExecuted">
+					<button  ng-click="{{app.commandFunction}}" type="button" class="btn btn-primary btn-lg btn-block">{{app.commandName}}</button>
 				  </div>
 
-				  <div class="row">
+				  <div class="row" ng-show="app.isCommandExecuted">
                     <div class="col-md-6">
-					  <button type="button" class="btn btn-primary btn-lg btn-block">New Encrypt</button>
+					  <button type="button" class="btn btn-primary btn-lg btn-block">{{app.subCommand1Name}}</button>
                     </div>
                     <div class="col-md-6">
-					  <button type="button" class="btn btn-primary btn-lg btn-block">Decrypt Text</button>
+					  <button type="button" class="btn btn-primary btn-lg btn-block">{{app.subCommand1Name}}</button>
 					</div>
 				</div>		
 			</div>
