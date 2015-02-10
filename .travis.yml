@@ -3,10 +3,10 @@ node_js:
   - "0.10"
 services:
   - mongodb
-#deploy:
-#  provider: heroku
-#  api_key:
-#    secure: p26FC7CAeKvkAjKWoadaInvIiGsXSM45ZSE0XBzcFFDt1Q3hFPEmkWhaM+Ck21dR44JznV2/ZdXyxiV6bv31hA45K1N9RthhMHzXvlEPmJ3t9DBAzV2zMUWF68VXeA9vmnW1tNt4lsOuHbSnlgWpqyKzGuDD0MYZx82ovpTxUQU=
-#  app: white-whale
+deploy:
+  provider: heroku
+  api_key:
+    secure: p26FC7CAeKvkAjKWoadaInvIiGsXSM45ZSE0XBzcFFDt1Q3hFPEmkWhaM+Ck21dR44JznV2/ZdXyxiV6bv31hA45K1N9RthhMHzXvlEPmJ3t9DBAzV2zMUWF68VXeA9vmnW1tNt4lsOuHbSnlgWpqyKzGuDD0MYZx82ovpTxUQU=
+  app: hideboy
 
   
